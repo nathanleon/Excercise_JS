@@ -294,13 +294,10 @@ Cree una función que tome tres colecciones de argumentos y devuelva el producto
 Examples:
     product(1,2)(1,1)(2,3) ➞ 8
     // 1 * 1 * 2 + 2 * 1 * 3
-
     product(10,2)(5,0)(2,3) ➞ 100
     // 10 * 5 * 2 + 2 * 0 * 3
-
     product(1,2)(2,3)(3,4) ➞ 30
     // 1 * 2 * 3 + 2 * 3 * 4
-
     product(1,2)(0,3)(3,0) ➞ 0
     // 1 * 0 * 3 + 2 * 3 * 0
 Es decir tomar el primer valor de cada coleccion de argumentos multiplicarlos para luego sumarlos con los segundos valores de los argumento 
@@ -334,11 +331,8 @@ Se ordena de menor a mayor valor.
 
 Ejemplos:
     uniqueSort([1, 2, 4, 3]) ➞ [1, 2, 3, 4]
-
     uniqueSort([1, 4, 4, 4, 4, 4, 3, 2, 1, 2]) ➞ [1, 2, 3, 4]
-
     uniqueSort([6, 7, 3, 2, 1]) ➞ [1, 2, 3, 6, 7]
-
 
     El Array.from()método estático crea una nueva Arrayinstancia, copiada superficialmente a partir de un objeto de tipo matriz o iterable.
     El constructor Set le permite crear objetos Set que almacenan valores únicos de cualquier tipo, ya sean valores primitivos o referencias de objetos.
@@ -489,8 +483,14 @@ Test.assertEquals(countVowels("abbbb"), 1)
 Test.assertEquals(countVowels("bbbab"), 1)
 Test.assertEquals(countVowels("bbaab"), 2)
 Test.assertEquals(countVowels("baabab"), 3)
+
 Operador ternario
 condición ? expr1 : expr2 
+
+g
+búsqueda global (global match); encuentra todos los resultados en vez de parar después de la primer búsqueda exitosa
+i
+ignorar mayúsculas o minúsculas
 
 function countVowels(str){
   const regexp = /[aeiou]/gi;
@@ -504,4 +504,352 @@ function countVowels(str){
   if (str.match(regexp) == null){
     return 0
   }else return str.match(regexp).length;        
+}
+
+/***************E12******************/
+/**
+Control de igualdad
+
+En este desafío, debe verificar la igualdad de dos parámetros dados diferentes: a y b.
+
+Tanto el valor como el tipo de parámetros deben probarse para tener una igualdad coincidente. Los posibles tipos de los parámetros dados son:
+
+Números
+Strings
+Booleanos ( false o true)
+Los valores especiales: undefined, null y NaN
+¿Qué ha aprendido hasta ahora que le permita hacer dos verificaciones diferentes (valor y tipo) con una sola declaración?
+
+Implemente una función que devuelva true si los parámetros son iguales y false si son diferentes.
+
+Ejemplos
+checkEquality(1, true) ➞ false
+// A number and a boolean: their type is different
+
+checkEquality(0, "0") ➞ false
+// A number and a string: their type is different
+
+checkEquality(1,  1) ➞ true
+// A number and a number: their type and value are equal
+
+Notas
+Si se queda atrapado en un desafío, busque ayuda en la pestaña Recursos .
+Si realmente está atascado, desbloquee soluciones en la pestaña Soluciones .
+
+JavaScript provides three different value-comparison operations:
+
+=== - Strict Equality Comparison ("strict equality", "identity", "triple equals")
+== - Abstract Equality Comparison ("loose equality", "double equals")
+Object.is provides SameValue (new in ES2015).
+
+test:
+Test.assertEquals(checkEquality(1, true), false, "Example #1")
+Test.assertEquals(checkEquality(0, "0"), false, "Example #2")
+Test.assertEquals(checkEquality(1, 1), true, "Example #3")
+Test.assertEquals(checkEquality(0, ""), false)
+Test.assertEquals(checkEquality(1, "1"), false)
+Test.assertEquals(checkEquality(0, false), false)
+Test.assertEquals(checkEquality(NaN, NaN), false)
+Test.assertEquals(checkEquality(null, undefined), false)
+Test.assertEquals(checkEquality(undefined, undefined), true)
+Test.assertEquals(checkEquality(false, null), false)
+*/
+function checkEquality(a, b) {
+  return a===b
+}
+
+function checkEquality(a, b) {
+   if(a===b){
+      return true
+   } else return false
+}
+
+/***************E13******************/
+/**
+Is the String Empty?
+Create a function that returns true if a string is empty and false otherwise (de lo contrario).
+Examples
+isEmpty("") ➞ true
+isEmpty(" ") ➞ false
+isEmpty("a") ➞ false
+
+Notas
+Una cadena que contiene sólo espacios en blanco " " no no cuenta como vacía.
+No te olvides returndel resultado.
+Si se queda atrapado en un desafío, busque ayuda en la pestaña Recursos .
+Si realmente está atascado, desbloquee soluciones en la pestaña Soluciones .
+
+Test.assertEquals(isEmpty(""), true)
+Test.assertEquals(isEmpty(" "), false)
+Test.assertEquals(isEmpty("            "), false)
+Test.assertEquals(isEmpty("38215"), false)
+Test.assertEquals(isEmpty("afjabsdf"), false)
+Test.assertEquals(isEmpty("!?@&"), false)
+*/
+function isEmpty(s) {
+	if (s === ""){
+    return true
+  } else return false
+}
+
+function isEmpty(s) {
+	return s.length == 0;
+}
+
+function isEmpty(s) {
+	return (s.length === 0 ? false : true)
+}
+
+function isEmpty(s) {
+	return !s
+}
+/*****************E14***********************
+Return the Last Element in an Array*
+
+Create a function that accepts an array and returns the last item in the array.
+Examples:
+getLastItem([1, 2, 3]) ➞ 3
+getLastItem(["cat", "dog", "duck"]) ➞ "duck"
+getLastItem([true, false, true]) ➞ true
+
+Notas
+No te olvides return del resultado.
+
+test:
+Test.assertEquals(getLastItem(['Cat', 'Dog', 'Duck']), 'Duck')
+Test.assertEquals(getLastItem([1, 2, 3]), 3)
+Test.assertEquals(getLastItem([undefined]))
+Test.assertEquals(getLastItem([true, false, false, true]), true)
+Test.assertEquals(getLastItem([7, 'String', false, undefined, null]), null)
+Test.assertEquals(getLastItem([false]), false)
+Test.assertEquals(getLastItem([undefined, undefined, undefined]), undefined)
+Test.assertEquals(getLastItem([1, 2, 3, 56, 87, 23, 65, 45]), 45)
+Test.assertEquals(getLastItem(['Apple', 'Orange', undefined]), undefined)
+Test.assertEquals(getLastItem([true, false, 'Apple']), 'Apple')
+Test.assertEquals(getLastItem([null, null, null]), null)
+Test.assertEquals(getLastItem([1]), 1)
+
+Acceso a elementos de un array
+Los índices de los arrays de JavaScript comienzan en cero, es decir, el índice del primer elemento de un array es 0, y el del último elemento es igual al valor de la propiedad length del array restándole 1.
+
+Si se utiliza un número de índice no válido, se obtendrá undefined.
+console.log(arr[arr.length - 1]) // escribe en consola 'este es el último elemento'
+*/
+
+function getLastItem(arr) {
+	return arr[arr.length -1]
+}
+
+function getLastItem(arr) {
+  return arr.pop();
+}
+
+/*****************E15***********************
+Check if an Array Contains a Given Number
+Write a function to check if an array contains a particular number.
+Examples:
+check([1, 2, 3, 4, 5], 3) ➞ true
+check([1, 1, 2, 1, 1], 3) ➞ false
+check([5, 5, 5, 6], 5) ➞ true
+check([], 5) ➞ false
+
+Notes:
+Don't forget (no Olvides) to return the result.
+
+Test: 
+Test.assertEquals(check([1, 2, 3, 4, 5], 3), true)
+Test.assertEquals(check([1, 1, 2, 1, 1], 3), false)
+Test.assertEquals(check([1, 1, 2, 1, 5, 4, 7], 7), true)
+Test.assertEquals(check([1, 1, 2, 1, 5, 4, 7], 8), false)
+Test.assertEquals(check([5, 5, 5, 6], 5), true)
+Test.assertEquals(check([], 5), false)
+
+The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+*/
+
+function check(arr, el) {
+	return arr.includes(el)
+}
+
+/*****************E16***********************
+Basic E-Mail Validation
+Create a function that accepts a string, checks if it's a valid email address and returns either true or false, depending on the evaluation.
+
+La cadena debe contener un carácter @ .
+La cadena debe contener un  carácter .
+El @ debe tener al menos un carácter en frente de ella.
+Por ejemplo, "e@edabit.com"es válido mientras "@edabit.com"no es válido.
+El .y el @ debe estar en los lugares apropiados.
+Por ejemplo, "hello.email@com"no es válido mientras "john.smith@email.com"es válido.
+Si la cadena pasa estas pruebas, se considera una dirección de correo electrónico válida.
+
+Notas:
+Ejemplos
+validateEmail("@gmail.com") ➞ false
+validateEmail("hello.gmail@com") ➞ false
+validateEmail("gmail") ➞ false
+validateEmail("hello@gmail") ➞ false
+validateEmail("hello@edabit.com") ➞ true
+
+Notas
+Consulte la pestaña Pruebas para ver exactamente lo que se está evaluando.
+Puede resolver este desafío con RegEx, pero está destinado a resolverse con lógica.
+Las soluciones que usan RegEx serán aceptadas pero desaprobadas :(
+
+  Test.assertEquals(validateEmail('@edabit.com'), false)
+Test.assertEquals(validateEmail('@edabit'), false)
+Test.assertEquals(validateEmail('matt@edabit.com'), true)
+Test.assertEquals(validateEmail(''), false, "Don't forget about empty strings!")
+Test.assertEquals(validateEmail('hello.gmail@com'), false)
+Test.assertEquals(validateEmail('bill.gates@microsoft.com'), true)
+Test.assertEquals(validateEmail('hello@email'), false)
+Test.assertEquals(validateEmail('%^%$#%^%'), false)
+Test.assertEquals(validateEmail('www.email.com'), false)
+Test.assertEquals(validateEmail('email'), false)
+
+El método indexOf() retorna el primer índice en el que se puede encontrar un elemento dado en el array, ó retorna -1 si el elemento no esta presente.
+Sintaxis
+array.indexOf(searchElement[, fromIndex])
+
+OR (||) lógico 	expr1 || expr2 	
+
+Regresa expr1 si tal puede convertirse a true; de lo contrario, regresa expr2. De esta forma, cuando se usa con valores Boolean, || regresa true si cualquier operando es verdadero; pero si ambos son falsos, regresa "false".
+
+El  método lastIndexOf() devuelve la posicion (indice) en la que se encuentra el valorBusqueda, dentro del objeto String que realiza la llamada, de la última ocurrencia del valor especificado; o -1 si no se halla. La búsqueda se realiza empezando por el final de la cadena que realiza la llamada, empezando en indiceDesde.
+
+cadena.lastIndexOf(valorBusqueda[, indiceDesde])
+*/
+
+function validateEmail(str) {
+    if (str.indexOf('@') < 1 || str.indexOf('.') < 1 || str.lastIndexOf('.') < str.indexOf('@') 
+     ) return false;
+  return true;
+}
+
+/***********E17********************
+Remove Duplicates from an Array
+Create a function that takes an array of items, removes all duplicate items and returns a new array in the same sequential order as the old array (minus duplicates).
+
+Examples
+removeDups([1, 0, 1, 0]) ➞ [1, 0]
+removeDups(["The", "big", "cat"]) ➞ ["The", "big", "cat"]
+removeDups(["John", "Taylor", "John"]) ➞ ["John", "Taylor"]
+
+Notes
+Tests contain arrays with both strings and numbers.
+Tests are case sensitive.
+
+Test: 
+Test.assertSimilar(removeDups(['John', 'Taylor', 'John']), ['John', 'Taylor'])
+Test.assertSimilar(removeDups(['John', 'Taylor', 'John', 'john']), ['John', 'Taylor', 'john'])
+Test.assertSimilar(removeDups(['javascript', 'python', 'python', 'ruby', 'javascript', 'c', 'ruby']), ['javascript', 'python', 'ruby', 'c'])
+Test.assertSimilar(removeDups([1, 2, 2, 2, 3, 2, 5, 2, 6, 6, 3, 7, 1, 2, 5]), [1, 2, 3, 5, 6, 7])
+Test.assertSimilar(removeDups(['#', '#', '%', '&', '#', '$', '&']), ['#', '%', '&', '$'])
+Test.assertSimilar(removeDups([3, 'Apple', 3, 'Orange', 'Apple']), [3, 'Apple', 'Orange'])
+
+... debuelve un nuevo array
+new Set
+El objeto Set permite almacenar valores únicos de cualquier tipo, desde valores básicos hasta objetos, con el única limitación de que no pueden estar duplicados.
+ */
+
+function removeDups(arr) {
+  return [...new Set(arr)];
+}
+
+
+/*************E18******************
+Validación del código PIN del cajero automático
+Los cajeros automáticos permiten códigos PIN de 4 o 6 dígitos y los códigos PIN no pueden contener más que exactamente 4 dígitos o exactamente 6 dígitos. Su tarea es crear una función que tome una cadena y regrese true si el PIN es válido y false si no lo es.
+
+Ejemplos
+validatePIN("1234") ➞ true
+validatePIN("12345") ➞ false
+validatePIN("a234") ➞ false
+validatePIN("") ➞ false
+
+Notas
+Algunos casos de prueba contienen caracteres especiales retornar false.
+Las cadenas vacías deben devolver falso.
+ 
+Test.assertEquals(validatePIN("1234"), true);
+Test.assertEquals(validatePIN("12345"), false);
+Test.assertEquals(validatePIN("a234"), false);
+Test.assertEquals(validatePIN(""), false);
+Test.assertEquals(validatePIN("%234"), false);
+Test.assertEquals(validatePIN("`234"), false);
+Test.assertEquals(validatePIN("@234"), false);
+Test.assertEquals(validatePIN("#234"), false);
+Test.assertEquals(validatePIN("$234"), false);
+Test.assertEquals(validatePIN("*234"), false);
+Test.assertEquals(validatePIN("5678"), true);
+Test.assertEquals(validatePIN("^234"), false);
+Test.assertEquals(validatePIN("(234"), false);
+Test.assertEquals(validatePIN(")234"), false);
+Test.assertEquals(validatePIN("123456"), true);
+Test.assertEquals(validatePIN("-234"), false);
+Test.assertEquals(validatePIN("_234"), false);
+Test.assertEquals(validatePIN("+234"), false);
+Test.assertEquals(validatePIN("=234"), false);
+Test.assertEquals(validatePIN("?234"), false);
+
+Leer mas sobre expresiones regulares en JS
+
+*/
+
+function validatePIN(pin) {
+  if(pin.length == 4 || pin.length ==6)
+    {      
+        let numPin = /[^0-9]/;
+      	return numPin.test(pin) ? false:true;
+    }
+  return false;
+}
+
+
+function validatePIN(pin) {
+  if(pin.length == 4 || pin.length ==6)
+    {      
+        let numPin = /[^0-9]/;
+        if (numPin.test(pin == false)){
+          return false
+        }	else return true
+    }
+  return false;
+}
+
+/***************************************
+ ¿El número de teléfono está formateado correctamente?
+ 
+ Cree una función que acepte una cadena y regrese true si está en el formato de un número de teléfono apropiado y false si no lo está. Suponga que cualquier número entre 0-9 (en los lugares apropiados) producirá un número de teléfono válido.
+
+Así es como se ve un número de teléfono válido:
+
+(123) 456-7890
+Ejemplos
+isValidPhoneNumber("(123) 456-7890") ➞ true
+isValidPhoneNumber("1111)555 2345") ➞ false
+isValidPhoneNumber("098) 123 4567") ➞ false
+Notas:
+No olvide el espacio después del paréntesis de cierre.
+
+test: 
+Test.assertEquals(isValidPhoneNumber("(123) 456-7890"), true)
+Test.assertEquals(isValidPhoneNumber("(1111)555 2345"), false)
+Test.assertEquals(isValidPhoneNumber("(098) 123 4567"), false)
+Test.assertEquals(isValidPhoneNumber("(123)456-7890"), false)
+Test.assertEquals(isValidPhoneNumber("abc(123)456-7890"), false)
+Test.assertEquals(isValidPhoneNumber("(123)456-7890abc"), false)
+Test.assertEquals(isValidPhoneNumber("abc(123)456-7890abc"), false)
+Test.assertEquals(isValidPhoneNumber("abc(123) 456-7890"), false)
+Test.assertEquals(isValidPhoneNumber("(123) 456-7890abc"), false)
+Test.assertEquals(isValidPhoneNumber("abc(123) 456-7890abc"), false)
+Test.assertEquals(isValidPhoneNumber("(123)-456-7890"), false)
+Test.assertEquals(isValidPhoneNumber("(123)_456-7890"), false)
+Test.assertEquals(isValidPhoneNumber("-123) 456-7890"), false)
+Test.assertEquals(isValidPhoneNumber("(519) 505-6498"), true)
+
+se me complica mucho las expresiones regulares en JS
+*/
+function isValidPhoneNumber(str) {
+	return str.match(/^\(\d{3}\)\s\d{3}-\d{4}$/) ? true : false;
 }
