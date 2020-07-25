@@ -356,7 +356,7 @@ function uniqueSort(arr) {
 
 
 
-/************************************************************************/
+/**********************************E8**************************************/
 
 /*
 Invierta el orden de las palabras con cinco letras o más:
@@ -372,4 +372,136 @@ Ejemplos:
 
 Notas
 Puede esperar que se proporcione una cadena válida para cada caso de prueba.
+
+Test:
+Test.assertEquals(reverse("Reverse"), "esreveR");
+Test.assertEquals(reverse("This is a typical sentence."), "This is a lacipyt .ecnetnes");
+Test.assertEquals(reverse("The dog is big."), "The dog is big.");
+Test.assertEquals(reverse("Reverse the order of every word greater than or equal to five characters."), "esreveR the redro of yreve word retaerg than or lauqe to five .sretcarahc");
+Test.assertEquals(reverse("Lets all be unique together until we realise we are all the same."), "Lets all be euqinu rehtegot litnu we esilaer we are all the .emas");
+Test.assertEquals(reverse("The old apple revels in its authority."), "The old elppa slever in its .ytirohtua");
+Test.assertEquals(reverse("The shooter says goodbye to his love."), "The retoohs says eybdoog to his .evol");
+Test.assertEquals(reverse("Please wait outside of the house."), "esaelP wait edistuo of the .esuoh");
+Test.assertEquals(reverse("Two seats were vacant."), "Two staes were .tnacav");
+Test.assertEquals(reverse("Sixty-Four comes asking for bread."), "ruoF-ytxiS semoc gniksa for .daerb");
+
+Array.prototype.map()
+El método map() crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
+
+El método split() divide un objeto de tipo String en un array (vector) de cadenas mediante la separación de cadenas en sub cadenas
+Sintaxis:
+cadena.split([separador][,limite])
+
+El método join() une todos los elementos de una matriz (o un objeto similar a una matriz) en una cadena y devuelve esta cadena.
+arr.join([separator])
+El método reverse() invierte el orden de los elementos de un array in place. El primer elemento pasa a ser el último y el último pasa a ser el primero.
+El método reverse cruza los elementos del objeto matriz invocados en su lugar, mutando la matriz, y retornando una referencia a la misma.
 */
+
+function reverse(str) {
+  let divide = str.split(' ');
+  divide = divide.map(
+      function(val){
+          if(val.length > 4){
+        // split() retorna un array en el cual reverse() y join() pueden ser aplicados
+          return val.split('').reverse().join('');
+    }
+    return val;
+  });
+  return divide.join(' ');
+}
+
+
+/*******************E9**********************/
+/*
+Recursión: invertir una cadena
+Escribe una función que invierta una cadena. Haz tu función recursiva.
+
+Ejemplos:
+reverse("hello") ➞ "olleh"
+reverse("world") ➞ "dlrow"
+reverse("a") ➞ "a"
+reverse("") ➞ ""
+*/
+
+function reverse(str){
+  return str.split('').reverse().join('');
+}
+
+/***************E10******************/
+/**
+Suma de los elementos en una matriz
+Cree una función que tome una matriz y devuelva la suma de todos los elementos de la matriz.
+Examples:
+sumArray([1, 2, 3]) ➞ 6
+// 1 + 2 + 3 = 6
+sumArray([1, [2, [1]], 3]) ➞ 7
+// 1 + 2 + 1 + 3 = 7
+
+
+test: 
+Test.assertEquals(sumArray([1, 2, 3]), 6)
+Test.assertEquals(sumArray([1, [1, 2], [3, 1]]), 8)
+Test.assertEquals(sumArray([[1, 1], [2, 8], 8]), 20)
+Test.assertEquals(sumArray([1, 2]), 3)
+Test.assertEquals(sumArray([1, [2, [1]], 3]), 7)
+
+El flat()método crea una nueva matriz con todos los elementos de la submatriz concatenados recursivamente hasta la profundidad especificada.
+const arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+arr4.flat(Infinity);
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+*/
+
+function sumArray(arr) {
+  let arrFlat = arr.flat(Infinity)
+  let suma = 0
+  for (let i = 0; i < arrFlat.length ; i++){
+    suma += arrFlat[i]
+  }
+	return suma
+}
+
+/***************E11******************/
+/**
+Recursion: Count Vowels
+Escriba una función que devuelva recursivamente el número de vocales en una cadena.
+Ejemplos
+countVowels("apple") ➞ 2
+countVowels("cheesecake") ➞ 5
+countVowels("bbb") ➞ 0
+countVowels("") ➞ 0
+Notas
+Todas las letras estarán en minúsculas.
+Las vocales son: a, e, i, o, u.
+
+El match()método recupera el resultado de hacer coincidir una cadena con una expresión regular .
+test:
+Test.assertEquals(countVowels("apple"), 2)
+Test.assertEquals(countVowels("cheesecake"), 5)
+Test.assertEquals(countVowels("martini"), 3)
+Test.assertEquals(countVowels("rhythm"), 0)
+Test.assertEquals(countVowels(""), 0)
+Test.assertEquals(countVowels("b"), 0)
+Test.assertEquals(countVowels("a"), 1)
+Test.assertEquals(countVowels("bbbbbb"), 0)
+Test.assertEquals(countVowels("bbbbba"), 1)
+Test.assertEquals(countVowels("abbbb"), 1)
+Test.assertEquals(countVowels("bbbab"), 1)
+Test.assertEquals(countVowels("bbaab"), 2)
+Test.assertEquals(countVowels("baabab"), 3)
+Operador ternario
+condición ? expr1 : expr2 
+
+function countVowels(str){
+  const regexp = /[aeiou]/gi;
+  return (str.match(regexp) == null) ? 0 : str.match(regexp).length;        
+}
+
+*/
+
+function countVowels(str){
+  const regexp = /[aeiou]/gi;
+  if (str.match(regexp) == null){
+    return 0
+  }else return str.match(regexp).length;        
+}
