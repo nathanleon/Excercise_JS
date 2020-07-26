@@ -817,7 +817,7 @@ function validatePIN(pin) {
   return false;
 }
 
-/***************************************
+/********************E19*******************
  ¿El número de teléfono está formateado correctamente?
  
  Cree una función que acepte una cadena y regrese true si está en el formato de un número de teléfono apropiado y false si no lo está. Suponga que cualquier número entre 0-9 (en los lugares apropiados) producirá un número de teléfono válido.
