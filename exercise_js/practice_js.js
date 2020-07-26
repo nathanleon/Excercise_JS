@@ -849,7 +849,9 @@ Test.assertEquals(isValidPhoneNumber("-123) 456-7890"), false)
 Test.assertEquals(isValidPhoneNumber("(519) 505-6498"), true)
 
 se me complica mucho las expresiones regulares en JS
+tengo que hacer mas ejercicios
 */
+
 function isValidPhoneNumber(str) {
 	return str.match(/^\(\d{3}\)\s\d{3}-\d{4}$/) ? true : false;
 }
